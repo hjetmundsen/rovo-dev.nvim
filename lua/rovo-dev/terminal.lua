@@ -1,15 +1,15 @@
----@mod claude-code.terminal Terminal management for claude-code.nvim
+---@mod rovo-dev.terminal Terminal management for rovo-dev.nvim
 ---@brief [[
---- This module provides terminal buffer management for claude-code.nvim.
+--- This module provides terminal buffer management for rovo-dev.nvim.
 --- It handles creating, toggling, and managing the terminal window.
 ---@brief ]]
 
 local M = {}
 
 --- Terminal buffer and window management
--- @table ClaudeCodeTerminal
+-- @table RovoDevTerminal
 -- @field instances table Key-value store of git root to buffer number
--- @field saved_updatetime number|nil Original updatetime before Claude Code was opened
+-- @field saved_updatetime number|nil Original updatetime before Rovo Dev was opened
 -- @field current_instance string|nil Current git root path for active instance
 M.terminal = {
   instances = {},
@@ -65,7 +65,7 @@ local function calculate_float_position(value, window_size, max_value)
   return math.max(0, math.min(pos, max_value - window_size))
 end
 
---- Create a floating window for Claude Code
+--- Create a floating window for Rovo Dev
 --- @param config table Plugin configuration containing window settings
 --- @param existing_bufnr number|nil Buffer number of existing buffer to show in the float (optional)
 --- @return number Window ID of the created floating window
@@ -105,7 +105,7 @@ local function create_float(config, existing_bufnr)
     if not vim.api.nvim_buf_is_valid(bufnr) then
       bufnr = vim.api.nvim_create_buf(false, true) -- unlisted, scratch
     else
-      local buftype = vim.api.nvim_get_option_value('buftype', {buf = bufnr})
+      local buftype = vim.api.nvim_get_option_value('buftype', { buf = bufnr })
       if buftype ~= 'terminal' then
         -- Buffer exists but is no longer a terminal, create a new one
         bufnr = vim.api.nvim_create_buf(false, true) -- unlisted, scratch
@@ -154,12 +154,12 @@ end
 --- @private
 local function configure_window_options(win_id, config)
   if config.window.hide_numbers then
-    vim.api.nvim_set_option_value('number', false, {win = win_id})
-    vim.api.nvim_set_option_value('relativenumber', false, {win = win_id})
+    vim.api.nvim_set_option_value('number', false, { win = win_id })
+    vim.api.nvim_set_option_value('relativenumber', false, { win = win_id })
   end
 
   if config.window.hide_signcolumn then
-    vim.api.nvim_set_option_value('signcolumn', 'no', {win = win_id})
+    vim.api.nvim_set_option_value('signcolumn', 'no', { win = win_id })
   end
 end
 
@@ -170,9 +170,9 @@ end
 --- @private
 local function generate_buffer_name(instance_id, config)
   if config.git.multi_instance then
-    return 'claude-code-' .. instance_id:gsub('[^%w%-_]', '-')
+    return 'rovo-dev-' .. instance_id:gsub('[^%w%-_]', '-')
   else
-    return 'claude-code'
+    return 'rovo-dev'
   end
 end
 
@@ -212,22 +212,22 @@ local function create_split(position, config, existing_bufnr)
   end
 end
 
---- Set up function to force insert mode when entering the Claude Code window
---- @param claude_code table The main plugin module
+--- Set up function to force insert mode when entering the Rovo Dev window
+--- @param rovo_dev table The main plugin module
 --- @param config table The plugin configuration
-function M.force_insert_mode(claude_code, config)
+function M.force_insert_mode(rovo_dev, config)
   local current_bufnr = vim.fn.bufnr('%')
 
-  -- Check if current buffer is any of our Claude instances
-  local is_claude_instance = false
-  for _, bufnr in pairs(claude_code.claude_code.instances) do
+  -- Check if current buffer is any of our Rovo instances
+  local is_rovo_instance = false
+  for _, bufnr in pairs(rovo_dev.rovo_dev.instances) do
     if bufnr and bufnr == current_bufnr and vim.api.nvim_buf_is_valid(bufnr) then
-      is_claude_instance = true
+      is_rovo_instance = true
       break
     end
   end
 
-  if is_claude_instance then
+  if is_rovo_instance then
     -- Only enter insert mode if we're in the terminal buffer and not already in insert mode
     -- and not configured to stay in normal mode
     if config.window.start_in_normal_mode then
@@ -273,9 +273,9 @@ local function is_valid_terminal_buffer(bufnr)
 
   local buftype = nil
   pcall(function()
-    buftype = vim.api.nvim_get_option_value('buftype', {buf = bufnr})
+    buftype = vim.api.nvim_get_option_value('buftype', { buf = bufnr })
   end)
-  
+
   local terminal_job_id = nil
   pcall(function()
     terminal_job_id = vim.b[bufnr].terminal_job_id
@@ -293,12 +293,12 @@ end
 local function handle_existing_instance(bufnr, config)
   local win_ids = vim.fn.win_findbuf(bufnr)
   if #win_ids > 0 then
-    -- Claude Code is visible, close the window
+    -- Rovo Dev is visible, close the window
     for _, win_id in ipairs(win_ids) do
       vim.api.nvim_win_close(win_id, true)
     end
   else
-    -- Claude Code buffer exists but is not visible, open it in a split or float
+    -- Rovo Dev buffer exists but is not visible, open it in a split or float
     if config.window.position == 'float' then
       create_float(config, bufnr)
     else
@@ -313,17 +313,17 @@ local function handle_existing_instance(bufnr, config)
   end
 end
 
---- Create new Claude Code instance
---- @param claude_code table The main plugin module
+--- Create new Rovo Dev instance
+--- @param rovo_dev table The main plugin module
 --- @param config table Plugin configuration
 --- @param git table Git module
 --- @param instance_id string Instance identifier
 --- @private
-local function create_new_instance(claude_code, config, git, instance_id)
+local function create_new_instance(rovo_dev, config, git, instance_id)
   if config.window.position == 'float' then
     -- For floating window, create buffer first with terminal
     local new_bufnr = vim.api.nvim_create_buf(false, true) -- unlisted, scratch
-    vim.api.nvim_set_option_value('bufhidden', 'hide', {buf = new_bufnr})
+    vim.api.nvim_set_option_value('bufhidden', 'hide', { buf = new_bufnr })
 
     -- Create the floating window
     local win_id = create_float(config, new_bufnr)
@@ -345,7 +345,7 @@ local function create_new_instance(claude_code, config, git, instance_id)
     configure_window_options(win_id, config)
 
     -- Store buffer number for this instance
-    claude_code.claude_code.instances[instance_id] = new_bufnr
+    rovo_dev.rovo_dev.instances[instance_id] = new_bufnr
 
     -- Enter insert mode if configured
     if config.window.enter_insert and not config.window.start_in_normal_mode then
@@ -371,7 +371,7 @@ local function create_new_instance(claude_code, config, git, instance_id)
     configure_window_options(current_win, config)
 
     -- Store buffer number for this instance
-    claude_code.claude_code.instances[instance_id] = vim.fn.bufnr('%')
+    rovo_dev.rovo_dev.instances[instance_id] = vim.fn.bufnr('%')
 
     -- Automatically enter insert mode in terminal unless configured to start in normal mode
     if config.window.enter_insert and not config.window.start_in_normal_mode then
@@ -380,22 +380,22 @@ local function create_new_instance(claude_code, config, git, instance_id)
   end
 end
 
---- Toggle the Claude Code terminal window
---- @param claude_code table The main plugin module
+--- Toggle the Rovo Dev terminal window
+--- @param rovo_dev table The main plugin module
 --- @param config table The plugin configuration
 --- @param git table The git module
-function M.toggle(claude_code, config, git)
+function M.toggle(rovo_dev, config, git)
   -- Determine instance ID based on config
   local instance_id = get_instance_id(config, git)
-  claude_code.claude_code.current_instance = instance_id
+  rovo_dev.rovo_dev.current_instance = instance_id
 
-  -- Check if this Claude Code instance is already running
-  local bufnr = claude_code.claude_code.instances[instance_id]
+  -- Check if this Rovo Dev instance is already running
+  local bufnr = rovo_dev.rovo_dev.instances[instance_id]
 
   -- Validate existing buffer
   if bufnr and not is_valid_terminal_buffer(bufnr) then
     -- Buffer is no longer a valid terminal, reset
-    claude_code.claude_code.instances[instance_id] = nil
+    rovo_dev.rovo_dev.instances[instance_id] = nil
     bufnr = nil
   end
 
@@ -405,10 +405,10 @@ function M.toggle(claude_code, config, git)
   else
     -- Prune invalid buffer entries
     if bufnr and not vim.api.nvim_buf_is_valid(bufnr) then
-      claude_code.claude_code.instances[instance_id] = nil
+      rovo_dev.rovo_dev.instances[instance_id] = nil
     end
     -- Create new instance
-    create_new_instance(claude_code, config, git, instance_id)
+    create_new_instance(rovo_dev, config, git, instance_id)
   end
 end
 

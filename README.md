@@ -9,7 +9,7 @@
 [![Version](https://img.shields.io/badge/Version-0.4.2-blue?style=flat-square)](https://github.com/hjetmundsen/rovo-dev.nvim/releases/tag/v0.4.2)
 [![Discussions](https://img.shields.io/github/discussions/hjetmundsen/rovo-dev.nvim?style=flat-square&logo=github)](https://github.com/hjetmundsen/rovo-dev.nvim/discussions)
 
-*A seamless integration between [Rovo Dev](https://github.com/anthropics/rovo-dev) AI assistant and Neovim*
+*A seamless integration between [Rovo Dev](https://community.atlassian.com/forums/Rovo-for-Software-Teams-Beta/Introducing-Rovo-Dev-CLI-AI-Powered-Development-in-your-terminal/ba-p/3043623) AI assistant and Neovim*
 
 [Features](#features) •
 [Requirements](#requirements) •
@@ -281,7 +281,7 @@ make format
 
 ## Acknowledgements
 
-- [Rovo Dev](https://github.com/anthropics/rovo-dev) by Anthropic - This plugin was entirely built using Rovo Dev. Development cost: $5.42 with 17m 12.9s of API time
+- [Rovo Dev](https://community.atlassian.com/forums/Rovo-for-Software-Teams-Beta/Introducing-Rovo-Dev-CLI-AI-Powered-Development-in-your-terminal/ba-p/3043623) by Atlassian - This plugin was entirely built using Rovo Dev. Development cost: $5.42 with 17m 12.9s of API time
 - [Plenary.nvim](https://github.com/nvim-lua/plenary.nvim) - Core dependency for testing framework and Git operations
 - [Semantic Versioning](https://semver.org/) - Versioning standard used in this project
 - [Contributor Covenant](https://www.contributor-covenant.org/) - Code of Conduct standard

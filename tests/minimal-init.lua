@@ -93,7 +93,7 @@ if status_ok then
   print('  :RovoDevToggle       - Toggle the Rovo Dev terminal')
   print('  :RovoDevRestart      - Restart the Rovo Dev session')
   print('  :RovoDevSuspend      - Suspend the current Rovo Dev session')
-  print('  :RovoDevResume       - Resume the suspended Rovo Dev session')
+  print('  :RovoDevRestore      - Resume the suspended Rovo Dev session')
   print('  :RovoDevQuit         - Quit the current Rovo Dev session')
   print('  :RovoDevRefreshFiles - Refresh the current working directory information')
 else

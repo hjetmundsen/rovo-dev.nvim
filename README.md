@@ -172,7 +172,6 @@ Basic command:
 Conversation management commands:
 
 - `:RovoDevRestore` - Resume the most recent conversation
-- `:RovoDevResume` - Display an interactive conversation picker
 
 Output options command:
 

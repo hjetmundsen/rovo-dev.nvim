@@ -27,7 +27,7 @@ Before creating a new issue:
 
 For help with using Rovo Dev:
 
-- Read the [README.md](README.md) for basic usage and installation
+- Read the [README.md](./README.md) for basic usage and installation
 - Check the [DEVELOPMENT.md](DEVELOPMENT.md) for development information
 - See the [doc/rovo-dev.txt](doc/rovo-dev.txt) for Neovim help documentation
 

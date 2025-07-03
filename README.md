@@ -41,8 +41,6 @@ This plugin was built entirely with Rovo Dev in a Neovim terminal, and then insi
 - [Rovo Dev CLI](https://community.atlassian.com/forums/Rovo-for-Software-Teams-Beta/Introducing-Rovo-Dev-CLI-AI-Powered-Development-in-your-terminal/ba-p/3043623) tool installed and available in your PATH
 - [plenary.nvim](https://github.com/nvim-lua/plenary.nvim) (dependency for git operations)
 
-See [CHANGELOG.md](CHANGELOG.md) for version history and updates.
-
 ## Installation
 
 ### Using [lazy.nvim](https://github.com/folke/lazy.nvim)

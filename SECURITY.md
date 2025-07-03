@@ -1,15 +1,5 @@
 # Security Policy
 
-## Supported Versions
-
-The following versions of Rovo Dev are currently supported with security updates:
-
-| Version | Supported          |
-| ------- | ------------------ |
-| 0.3.x   | :white_check_mark: |
-| 0.2.x   | :white_check_mark: |
-| < 0.2   | :x:                |
-
 ## Reporting a Vulnerability
 
 We take the security of Rovo Dev seriously. If you believe you've found a security vulnerability, please follow these steps:

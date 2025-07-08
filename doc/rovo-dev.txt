@@ -194,6 +194,6 @@ https://github.com/hjetmundsen/rovo-dev.nvim/blob/main/CONTRIBUTING.md
 ==============================================================================
 8. LICENSE                                                  *rovo-dev-license*
 
-MIT License
+Apache 2.0 License
 
  vim:tw=78:ts=8:ft=help:norl:

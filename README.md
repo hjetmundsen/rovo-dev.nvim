@@ -1,6 +1,7 @@
 # Rovo Dev Neovim Plugin
 
-[![GitHub License](https://img.shields.io/github/license/hjetmundsen/rovo-dev.nvim?style=flat-square)](https://github.com/hjetmundsen/rovo-dev.nvim/blob/main/LICENSE)
+[![Atlassian license](https://img.shields.io/badge/license-Apache%202.0-blue.svg?style=flat-square)](LICENSE)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](CONTRIBUTING.md)
 [![GitHub Stars](https://img.shields.io/github/stars/hjetmundsen/rovo-dev.nvim?style=flat-square)](https://github.com/hjetmundsen/rovo-dev.nvim/stargazers)
 [![GitHub Issues](https://img.shields.io/github/issues/hjetmundsen/rovo-dev.nvim?style=flat-square)](https://github.com/hjetmundsen/rovo-dev.nvim/issues)
 [![CI](https://img.shields.io/github/actions/workflow/status/hjetmundsen/rovo-dev.nvim/ci.yml?branch=main&style=flat-square&logo=github)](https://github.com/hjetmundsen/rovo-dev.nvim/actions/workflows/ci.yml)
@@ -11,17 +12,7 @@
 
 *A seamless integration between [Rovo Dev](https://community.atlassian.com/forums/Rovo-for-Software-Teams-Beta/Introducing-Rovo-Dev-CLI-AI-Powered-Development-in-your-terminal/ba-p/3043623) AI assistant and Neovim*
 
-[Features](#features) •
-[Requirements](#requirements) •
-[Installation](#installation) •
-[Configuration](#configuration) •
-[Usage](#usage) •
-[Contributing](#contributing) •
-[Discussions](https://github.com/hjetmundsen/rovo-dev.nvim/discussions)
-
-This plugin was built entirely with Rovo Dev in a Neovim terminal, and then inside itself using Rovo Dev for everything!
-
-## Features
+## Usage
 
 - 🚀 Toggle Rovo Dev in a terminal window with a single key press
 - 🧠 Support for command-line arguments like `--restore` and custom variants
@@ -35,13 +26,13 @@ This plugin was built entirely with Rovo Dev in a Neovim terminal, and then insi
 - ✅ Configuration validation to prevent errors
 - 🧪 Testing framework for reliability (44 comprehensive tests)
 
-## Requirements
+## Installation
+
+### Requirements
 
 - Neovim 0.7.0 or later
-- [Rovo Dev CLI](https://community.atlassian.com/forums/Rovo-for-Software-Teams-Beta/Introducing-Rovo-Dev-CLI-AI-Powered-Development-in-your-terminal/ba-p/3043623) tool installed and available in your PATH
-- [plenary.nvim](https://github.com/nvim-lua/plenary.nvim) (dependency for git operations)
-
-## Installation
+- Rovo Dev CLI tool installed and available in your PATH
+- plenary.nvim (dependency for git operations)
 
 ### Using [lazy.nvim](https://github.com/folke/lazy.nvim)
 
@@ -80,7 +71,9 @@ Plug 'hjetmundsen/rovo-dev.nvim'
 " lua require('rovo-dev').setup()
 ```
 
-## Configuration
+## Documentation
+
+### Configuration
 
 The plugin can be configured by passing a table to the `setup` function. Here's the default configuration:
 
@@ -146,9 +139,9 @@ require("rovo-dev").setup({
 })
 ```
 
-## Usage
+### Usage
 
-### Quick Start
+#### Quick Start
 
 ```vim
 " In your Vim/Neovim commands or init file:
@@ -163,7 +156,7 @@ vim.cmd[[RovoDev]]
 vim.keymap.set('n', '<leader>cc', '<cmd>RovoDev<CR>', { desc = 'Toggle Rovo Dev' })
 ```
 
-### Commands
+#### Commands
 
 Basic command:
 
@@ -179,7 +172,7 @@ Output options command:
 
 Note: Commands are automatically generated for each entry in your `command_variants` configuration.
 
-### Key Mappings
+#### Key Mappings
 
 Default key mappings:
 
@@ -204,7 +197,7 @@ Note: After scrolling with `<C-f>` or `<C-b>`, you'll need to press the `i` key 
 
 When Rovo Dev modifies files that are open in Neovim, they'll be automatically reloaded.
 
-### Floating Window Example
+#### Floating Window Example
 
 To use Rovo Dev in a floating window:
 
@@ -224,29 +217,7 @@ require("rovo-dev").setup({
 })
 ```
 
-## How it Works
-
-This plugin:
-
-1. Creates a terminal buffer running the Rovo Dev CLI
-2. Sets up autocommands to detect file changes on disk
-3. Automatically reloads files when they're modified by Rovo Dev
-4. Provides convenient keymaps and commands for toggling the terminal
-5. Automatically detects git repositories and sets working directory to the git root
-
-## Contributing
-
-Contributions are welcome! Please check out our [contribution guidelines](CONTRIBUTING.md) for details on how to get started.
-
-## License
-
-MIT License - See [LICENSE](LICENSE) for more information.
-
-## Development
-
-For a complete guide on setting up a development environment, installing all required tools, and understanding the project structure, please refer to [DEVELOPMENT.md](DEVELOPMENT.md).
-
-### Development Setup
+## Tests
 
 The project includes comprehensive setup for development:
 
@@ -270,23 +241,15 @@ scripts/setup-hooks.sh
 make format
 ```
 
-## Community
+## Contributions
 
-- [GitHub Discussions](https://github.com/hjetmundsen/rovo-dev.nvim/discussions) - Get help, share ideas, and connect with other users
-- [GitHub Issues](https://github.com/hjetmundsen/rovo-dev.nvim/issues) - Report bugs or suggest features
-- [GitHub Pull Requests](https://github.com/hjetmundsen/rovo-dev.nvim/pulls) - Contribute to the project
+Contributions to rovo-dev.nvim are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for details.
 
-## Acknowledgements
+## License
 
-- [Rovo Dev](https://community.atlassian.com/forums/Rovo-for-Software-Teams-Beta/Introducing-Rovo-Dev-CLI-AI-Powered-Development-in-your-terminal/ba-p/3043623) by Atlassian - This plugin was entirely built using Rovo Dev. Development cost: $5.42 with 17m 12.9s of API time
-- [Plenary.nvim](https://github.com/nvim-lua/plenary.nvim) - Core dependency for testing framework and Git operations
-- [Semantic Versioning](https://semver.org/) - Versioning standard used in this project
-- [Contributor Covenant](https://www.contributor-covenant.org/) - Code of Conduct standard
-- [Keep a Changelog](https://keepachangelog.com/) - Changelog format
-- [LuaCATS](https://luals.github.io/wiki/annotations/) - Type annotations for better IDE support
-- [StyLua](https://github.com/JohnnyMorganz/StyLua) - Lua code formatter
-- [Luacheck](https://github.com/lunarmodules/luacheck) - Lua static analyzer and linter
+Copyright (c) [2025] Atlassian US., Inc.
+Apache 2.0 licensed, see [LICENSE](LICENSE) file.
 
----
+<br/>
 
-Made with ❤️ by [Henry Jetmundsen](https://github.com/hjetmundsen)
+[![With â¤ï¸ from Atlassian](https://raw.githubusercontent.com/atlassian-internal/oss-assets/master/banner-cheers-light.png)](https://www.atlassian.com)

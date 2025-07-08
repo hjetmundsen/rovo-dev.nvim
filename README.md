@@ -4,10 +4,10 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](CONTRIBUTING.md)
 [![GitHub Stars](https://img.shields.io/github/stars/hjetmundsen/rovo-dev.nvim?style=flat-square)](https://github.com/hjetmundsen/rovo-dev.nvim/stargazers)
 [![GitHub Issues](https://img.shields.io/github/issues/hjetmundsen/rovo-dev.nvim?style=flat-square)](https://github.com/hjetmundsen/rovo-dev.nvim/issues)
-[![CI](https://img.shields.io/github/actions/workflow/status/hjetmundsen/rovo-dev.nvim/ci.yml?branch=main&style=flat-square&logo=github)](https://github.com/hjetmundsen/rovo-dev.nvim/actions/workflows/ci.yml)
+[![CI](https://img.shields.io/github/actions/workflow/status/hjetmundsen/rovo-dev.nvim/ci.yml?branch=main&style=flat-square&logo=github)](https://github.com/hjetmundsen/rovo-dev.nvim/.github/workflows/ci.yml)
 [![Neovim Version](https://img.shields.io/badge/Neovim-0.7%2B-blueviolet?style=flat-square&logo=neovim)](https://github.com/neovim/neovim)
 [![Tests](https://img.shields.io/badge/Tests-44%20passing-success?style=flat-square&logo=github-actions)](https://github.com/hjetmundsen/rovo-dev.nvim/actions/workflows/ci.yml)
-[![Version](https://img.shields.io/badge/Version-0.4.2-blue?style=flat-square)](https://github.com/hjetmundsen/rovo-dev.nvim/releases/tag/v0.4.2)
+<!-- [![Version](https://img.shields.io/badge/Version-0.4.2-blue?style=flat-square)](https://github.com/hjetmundsen/rovo-dev.nvim/releases/tag/v0.4.2) -->
 [![Discussions](https://img.shields.io/github/discussions/hjetmundsen/rovo-dev.nvim?style=flat-square&logo=github)](https://github.com/hjetmundsen/rovo-dev.nvim/discussions)
 
 *A seamless integration between [Rovo Dev](https://community.atlassian.com/forums/Rovo-for-Software-Teams-Beta/Introducing-Rovo-Dev-CLI-AI-Powered-Development-in-your-terminal/ba-p/3043623) AI assistant and Neovim*
